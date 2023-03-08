@@ -1,5 +1,5 @@
 # Script for adding new computers to a Windows domain. Insitutional use.
-# Author: Rob Pelger - rpelger@icloud.com
+# Author: Rob Pelger
 # Revised: 2022.05.06
 # Revisions: Add Windows.Forms objects
 
