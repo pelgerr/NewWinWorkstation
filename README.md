@@ -1,6 +1,6 @@
 # NewComputer
 
-_Script for adding new computers to the domain._
+_Interactive GUI for registering a new workstation with a Windows domain._
 
 ---
 
