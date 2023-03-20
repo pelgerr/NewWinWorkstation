@@ -132,16 +132,16 @@ function Get-Description {
 function Push-ADChanges {
     # Get user domain credentials
 	# DEBUG
-    #$credential = Get-Credential
+    $credential = Get-Credential
     # Add computer to the correct OU, change hostname
 	# DEBUG
-    #Add-Computer -DomainName "GordonConwell.edu" -OUPath OU=$campus",OU=Windows,OU=Workstations,OU=Hardware,OU=1GCTS,DC=gordonconwell,DC=edu" -Credential $credential -NewName $hostname
+    Add-Computer -DomainName "GordonConwell.edu" -OUPath OU=$campus",OU=Windows,OU=Workstations,OU=Hardware,OU=ORGOU,DC=domain,DC=suffix" -Credential $credential -NewName $hostname
     ## BROKEN - Needs ActiveDirectory module installed
     ## TODO: Either get AD module installed or find different way to push description changes
     ## Push description change to AD
     ## Set-ADComputer -Identity $hostname -Description $description -Credential $credential
 	# DEBUG
-    #Write-Output "Active Directory successfully updated! Restarting..."
+    Write-Output "Active Directory successfully updated! Restarting..."
 }
 
 ### BEGIN MAIN
@@ -188,12 +188,12 @@ $result = New-Window $title $body $bodyType
 # Push changes, restrict ExecutionPolicy, and reboot if OK button is pressed. Otherwise, abort script and exit
 if ($result -eq [System.Windows.Forms.DialogResult]::OK) {
 	# DEBUG
-    #Push-ADChanges
+    Push-ADChanges
     # Restrict script execution policy before exiting
 	# DEBUG
-    #Set-ExecutionPolicy restricted
+    Set-ExecutionPolicy restricted
 	# DEBUG
-    #Restart-Computer
+    Restart-Computer
 }
 else {
     Write-Output "Transaction aborted. Please run the script again."
